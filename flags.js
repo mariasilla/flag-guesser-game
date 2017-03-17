@@ -27,6 +27,8 @@ $("document").ready(function() {
   let answerButtonThree = $(".three");
   let answerButtonFour = $(".four");
   let popover = $('[data-toggle="popover"]');
+  let winner = 0;
+
 
 
   // flagsArr.forEach(function(index){
@@ -82,27 +84,38 @@ $("document").ready(function() {
           radioBtnFourName.text(flagsArr[0].Results.US.Name);
 
           answerButtonOne.click(function(){
+
              answerButtonOne.addClass("correct");
             //  popover.attr("data-content", "Correct!:) Click next!");
              alert("That's correct! Click Next!")
+             winner+=1;
+            //  answerButtonTwo.hide();
+            //  answerButtonThree.hide();
+            //  answerButtonFour.hide();
           })
         answerButtonTwo.click(function(){
              answerButtonTwo.addClass("wrong");
-                alert("Wrong! Click next!");
-                answerButtonOne.hide();
-                answerButtonThree.hide();
-                answerButtonFour.hide();
+                // alert("Wrong! Click next!");
+                // answerButtonOne.hide();
+                // answerButtonThree.hide();
+                // answerButtonFour.hide();
          })
          answerButtonThree.click(function(){
               answerButtonThree.addClass("wrong");
-                 alert("Wrong! Click next!");
+                //  alert("Wrong! Click next!");
+                //  answerButtonOne.hide();
+                //  answerButtonTwo.hide();
+                //  answerButtonFour.hide();
          })
          answerButtonFour.click(function(){
               answerButtonFour.addClass("wrong");
-                 alert("Wrong! Click next!");
+                //  alert("Wrong! Click next!");
+                //  answerButtonOne.hide();
+                //  answerButtonTwo.hide();
+                //  answerButtonThree.hide();
          })
+        showWinner();
       }; // japanModal() ends here
-
       function canadaModal() {
           flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/CA.png");
           radioBtnOneName.text(flagsArr[0].Results.RU.Name);
@@ -119,11 +132,13 @@ $("document").ready(function() {
          answerButtonThree.click(function(){
               answerButtonThree.addClass("correct");
               alert("That's correct! Click Next!")
+              winner+=1;
               // popover.attr("data-content", "Correct!:) Click next!");
          })
          answerButtonFour.click(function(){
               answerButtonFour.addClass("wrong");
          })
+         showWinner();
       }; // canadaModal() ends here
 
       function usaModal(){
@@ -141,6 +156,7 @@ $("document").ready(function() {
            answerButtonTwo.addClass("correct");
              // popover.attr("data-content", "Correct!:) Click next!");
              alert("That's correct! Click Next!")
+             winner+=1;
        })
        answerButtonThree.click(function(){
             answerButtonThree.addClass("wrong");
@@ -150,6 +166,7 @@ $("document").ready(function() {
             answerButtonFour.addClass("wrong");
             alert("Wrong! Click next!");
        })
+       showWinner();
       }; //usaModal() ends here
 
       //when start button is clicked, modal is triggered
@@ -158,10 +175,9 @@ $("document").ready(function() {
           //loop through flagArr and change attributes of myModal
           japanModal();
 
-        })
+        });
         //each time next button is clicked, the following modal is triggered
-        let counter = 1;
-
+         let counter = 1;
          nextBtn.on("click", function (event) {
            if(counter === 1) {
            myModal.modal('show');
@@ -173,10 +189,17 @@ $("document").ready(function() {
              usaModal();
              counter = 3;
            }
+         });
 
-          })
+         // function to check if winner
+         function showWinner() {
+          //  myModal.modal('show');
+           if(winner === 3) {
+           alert("Congrats! You won!")
+           }
+         };
 
-  } // flagsGame() ends here
+  }; // flagsGame() ends here
 
 
 
