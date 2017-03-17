@@ -1,0 +1,44 @@
+
+.circle {
+  height: 500px;
+  width: 500px;
+  margin: 140px auto;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+}
+.earth {
+    display: block;
+    margin: 140px auto;
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+    /*world image version1 from http://bit.ly/2nkgSpt */
+    /*world image version2 from http://bit.ly/2nkmZda or http://bit.ly/2mWIeB3*/
+    /*watercolor world image borrowed from https://static.vecteezy.com/system/resources/previews/000/131/510/non_2x/watercolor-world-map-vector.jpg */
+    background-image: url(images/watercolor-world-map-vector.jpg);
+    background-size: cover;
+    /*box-shadow: inset;*/
+    animation:spin 15s linear alternate infinite;
+}
+@keyframes spin{
+  100%{background-position:100%;}
+}
+.earth .shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 120px auto;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 55%);
+  transform: rotateX(96deg) translateZ(-147px);
+  z-index: -1;
+}
+#playButton{
+  margin: 150px 47% -100px;
+}
+.flag{
+  border: 1px solid #000000;
+  /*background-image: url("http://www.geognos.com/media/flags/world-countries-flags-160X80.png");*/
+  height: 143px;
+  width: 243px;
+}
