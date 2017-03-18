@@ -1,7 +1,7 @@
 $("document").ready(function() {
 //HTTP Get request to http://www.geognos.com/geo/en/world-countries-API.html
  let flagsArr = [];
- let imageFlagsArr = [];
+
  $.ajax({
    dataType: "json",
    method: 'GET',
@@ -12,9 +12,8 @@ $("document").ready(function() {
    }
   });
 
-
   let playButton = $("#playButton");
-  let myModal = $("#myModal");
+  let flagModal = $("#flagModal");
   let flagImg = $(".flag");
   let radioBtnOneName = $(".radioBtnOne");
   let radioBtnTwoName = $(".radioBtnTwo");
@@ -28,8 +27,8 @@ $("document").ready(function() {
   let answerButtonFour = $(".four");
   let popover = $('[data-toggle="popover"]');
   let winner = 0;
-
-
+  let looser = 0;
+  // let score = 0;
 
   // flagsArr.forEach(function(index){
       // console.log(flagsArr[0].Results.i.Name);
@@ -45,15 +44,14 @@ $("document").ready(function() {
                  for (let key in flagsArr[0].Results) {
                     //  console.log(flagsArr[0].Results[key].Name);
                      countriesNames.push(flagsArr[0].Results[key].Name);
-                  }
-
-           })
-
+                    }
+                 })
+                // console.log(flagsArr[0].Results);
        // Ordered Array of all the countries in alphabetical order
-      // let countriesNamesOrdered = countriesNames.sort();
-      //    console.log(countriesNamesOrdered);
+      let countriesNamesOrdered = countriesNames.sort();
+         console.log(countriesNamesOrdered);
+      var randomCountry = countriesNamesOrdered[Math.floor(Math.random() * countriesNamesOrdered.length)];
 
-     console.log(flagsArr[0].Results);
 
       //  //MODAL
       //  //flags image chnage every 80px on sprite
@@ -73,9 +71,44 @@ $("document").ready(function() {
       //
 
 
+      function showRadioBtnOne() {
+        $(".one").show();
+        $(".two").hide();
+        $(".three").hide();
+        $(".four").hide();
+      }
+
+      function showRadioBtnTwo() {
+        $(".two").show();
+        $(".one").hide();
+        $(".three").hide();
+        $(".four").hide();
+      }
+
+      function showRadioBtnThree() {
+        $(".three").show();
+        $(".one").hide();
+        $(".two").hide();
+        $(".four").hide();
+      }
+
+      function showRadioBtnFour() {
+        $(".four").show();
+        $(".one").hide();
+        $(".two").hide();
+        $(".three").hide();
+      }
+
+      function showAllBtns() {
+        $(".one").show();
+        $(".two").show();
+        $(".three").show();
+        $(".four").show();
+      }
+
       //FLAG MODALS START HERE
       function japanModal() {
-        //change attributes of myModal according to country flag
+        //change attributes of flagModal according to country flag
           // flagImg.css("background-position", "-1px -8480px");
           flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/JP.png")
           radioBtnOneName.text(flagsArr[0].Results.JP.Name);
@@ -84,39 +117,30 @@ $("document").ready(function() {
           radioBtnFourName.text(flagsArr[0].Results.US.Name);
 
           answerButtonOne.click(function(){
-
-             answerButtonOne.addClass("correct");
+            //  answerButtonOne.addClass("correct");
             //  popover.attr("data-content", "Correct!:) Click next!");
-             alert("That's correct! Click Next!")
              winner+=1;
-            //  answerButtonTwo.hide();
-            //  answerButtonThree.hide();
-            //  answerButtonFour.hide();
+             showRadioBtnOne();
+            })
+            answerButtonTwo.click(function(){
+              // answerButtonTwo.addClass("wrong");
+              looser+=1;
+              showRadioBtnTwo();
+            })
+            answerButtonThree.click(function(){
+              // answerButtonThree.addClass("wrong");
+                looser+=1;
+                showRadioBtnThree();
           })
-        answerButtonTwo.click(function(){
-             answerButtonTwo.addClass("wrong");
-                // alert("Wrong! Click next!");
-                // answerButtonOne.hide();
-                // answerButtonThree.hide();
-                // answerButtonFour.hide();
+          answerButtonFour.click(function(){
+              // answerButtonFour.addClass("wrong");
+              looser+=1;
+              showRadioBtnFour();
          })
-         answerButtonThree.click(function(){
-              answerButtonThree.addClass("wrong");
-                //  alert("Wrong! Click next!");
-                //  answerButtonOne.hide();
-                //  answerButtonTwo.hide();
-                //  answerButtonFour.hide();
-         })
-         answerButtonFour.click(function(){
-              answerButtonFour.addClass("wrong");
-                //  alert("Wrong! Click next!");
-                //  answerButtonOne.hide();
-                //  answerButtonTwo.hide();
-                //  answerButtonThree.hide();
-         })
-        showWinner();
+
       }; // japanModal() ends here
       function canadaModal() {
+          showAllBtns();
           flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/CA.png");
           radioBtnOneName.text(flagsArr[0].Results.RU.Name);
           radioBtnTwoName.text(flagsArr[0].Results.JP.Name);
@@ -125,23 +149,30 @@ $("document").ready(function() {
 
           answerButtonOne.click(function(){
              answerButtonOne.addClass("wrong");
+             looser+=1;
+             showRadioBtnOne();
           })
         answerButtonTwo.click(function(){
              answerButtonTwo.addClass("wrong");
+               looser+=1;
+               showRadioBtnTwo();
          })
          answerButtonThree.click(function(){
               answerButtonThree.addClass("correct");
-              alert("That's correct! Click Next!")
               winner+=1;
+              showRadioBtnThree();
               // popover.attr("data-content", "Correct!:) Click next!");
          })
          answerButtonFour.click(function(){
               answerButtonFour.addClass("wrong");
+                looser+=1;
+                showRadioBtnFour();
          })
-         showWinner();
+
       }; // canadaModal() ends here
 
       function usaModal(){
+          showAllBtns();
           flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/US.png");
           radioBtnOneName.text(flagsArr[0].Results.RU.Name);
           radioBtnTwoName.text(flagsArr[0].Results.US.Name);
@@ -150,29 +181,73 @@ $("document").ready(function() {
 
         answerButtonOne.click(function(){
            answerButtonOne.addClass("wrong");
-           alert("Wrong! Click next!");
+          //  alert("Wrong! Click next!");
+            looser+=1;
+            showRadioBtnOne();
         })
        answerButtonTwo.click(function(){
            answerButtonTwo.addClass("correct");
              // popover.attr("data-content", "Correct!:) Click next!");
-             alert("That's correct! Click Next!")
+            //  alert("That's correct! Click Next!")
              winner+=1;
+             showRadioBtnTwo();
        })
        answerButtonThree.click(function(){
             answerButtonThree.addClass("wrong");
-            alert("Wrong! Click next!");
+            // alert("Wrong! Click next!");
+            looser+=1;
+            showRadioBtnThree();
        })
        answerButtonFour.click(function(){
             answerButtonFour.addClass("wrong");
-            alert("Wrong! Click next!");
+            // alert("Wrong! Click next!");
+            looser+=1;
+            showRadioBtnFour();
        })
-       showWinner();
+
       }; //usaModal() ends here
+
+      function chinaModal(){
+          showAllBtns();
+          flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/CN.png");
+          radioBtnOneName.text(flagsArr[0].Results.GR.Name);
+          radioBtnTwoName.text(flagsArr[0].Results.US.Name);
+          radioBtnThreeName.text(flagsArr[0].Results.CN.Name);
+          radioBtnFourName.text(flagsArr[0].Results.CL.Name);
+
+        answerButtonOne.click(function(){
+           answerButtonOne.addClass("wrong");
+          //  alert("Wrong! Click next!");
+           looser+=1;
+           showRadioBtnOne();
+        })
+       answerButtonTwo.click(function(){
+           answerButtonTwo.addClass("wrong");
+             // popover.attr("data-content", "Correct!:) Click next!");
+            //  alert("That's correct! Click Next!")
+             looser+=1;
+             showRadioBtnTwo();
+       })
+       answerButtonThree.click(function(){
+            answerButtonThree.addClass("correct");
+            // alert("Wrong! Click next!");
+            winner+=1;
+            showRadioBtnThree();
+       })
+       answerButtonFour.click(function(){
+            answerButtonFour.addClass("wrong");
+            // alert("Wrong! Click next!");
+            looser+=1;
+            showRadioBtnFour();
+       })
+
+     }; //ChinaModal() ends here
+
 
       //when start button is clicked, modal is triggered
         playButton.on("click", function (event) {
-          myModal.modal('show');
-          //loop through flagArr and change attributes of myModal
+          flagModal.modal('show');
+          //loop through flagArr and change attributes of flagModal
           japanModal();
 
         });
@@ -180,33 +255,58 @@ $("document").ready(function() {
          let counter = 1;
          nextBtn.on("click", function (event) {
            if(counter === 1) {
-           myModal.modal('show');
+           flagModal.modal('show');
            canadaModal();
            counter = 2;
            // nextBtn.removeClass("next").addClass("nextOne");
-           } else {
-             myModal.modal('show');
+           } else if (counter === 2){
+             flagModal.modal('show');
              usaModal();
              counter = 3;
+           } else if (counter === 3) {
+             flagModal.modal('show');
+             chinaModal();
+             counter = 4;
+           } else {
+               gameResult();
+               console.log(counter);
            }
          });
 
-         // function to check if winner
-         function showWinner() {
-          //  myModal.modal('show');
-           if(winner === 3) {
-           alert("Congrats! You won!")
+         // functions to display winner or looser message
+         function showWinnerModal() {
+          //  flagModal.modal('show');
+          //  if(winner === 2) {
+           $("#winnerOrLooserModal").modal("show");
+           $(".winner").text("You won!!! Congrats!!!");
+           $(".winnerMessage").text("You can now check out these awesome TRAVEL DEALS!")
+           $(".winnerGif").attr("src", "https://media.giphy.com/media/1eAG5O47bHjpK/giphy.gif");
+           flagModal.modal('hide');
+
+          //  }
+         }; //showWinner() ends here
+
+         function showLooserModal() {
+          //  if(looser === 2) {
+             $("#winnerOrLooserModal").modal("show");
+             $(".looser").text("Sorry! Try again!!!");
+             $(".looserGif").attr("src", "https://media.giphy.com/media/auxWjSpDJ8544/giphy.gif");
+             flagModal.modal('hide');
+          //  }
+         }; //showLooser() ends here
+
+         //function check if winner or looser
+         function gameResult() {
+           if(winner > 2) {
+           showWinnerModal();
+           console.log(winner);
+         } else if (looser > 2){
+           showLooserModal();
+           console.log(looser);
            }
-         };
+         }
 
   }; // flagsGame() ends here
-
-
-
-
-  // answerButton.click(function(){
-  //    alert("a");
-  //  })
 
 //Activate Bootstrap popover on click
 // $(function () {
@@ -216,96 +316,4 @@ $("document").ready(function() {
 // })
 
 
-
-// //FLAG MODALS START HERE
-//   function japanModal() {
-//     //loop through flagArr and change attributes of myModal to those of japan
-//       flagArr.forEach(function(index){
-//       flagImg.attr("src", flagArr[0][4].url);
-//       radioBtnOneName.text(flagArr[0][0].answerOneCorrect);
-//       radioBtnTwoName.text(flagArr[0][1].answerTwo);
-//       radioBtnThreeName.text(flagArr[0][2].answerThree);
-//       radioBtnFourName.text(flagArr[0][3].answerFour);
-//     })
-//     answerButtonOne.click(function(){
-//        answerButtonOne.addClass("correct");
-//        popover.attr("data-content", "Correct!:) Click next!");
-//
-//      })
-//     answerButtonTwo.click(function(){
-//         answerButtonTwo.addClass("wrong");
-//     })
-//     answerButtonThree.click(function(){
-//          answerButtonThree.addClass("wrong");
-//     })
-//     answerButtonFour.click(function(){
-//           answerButtonFour.addClass("wrong");
-//      })
-//   };
-
-  // function canadaModal() {
-  //   flagArr.forEach(function(index){
-  //     flagImg.attr("src", flagArr[1][4].url);
-  //     radioBtnOneName.text(flagArr[1][0].answerOne);
-  //     radioBtnTwoName.text(flagArr[1][1].answerTwo);
-  //     radioBtnThreeName.text(flagArr[1][2].answerThree);
-  //     radioBtnFourName.text(flagArr[1][3].answerFourCorrect);
-  //   })
-  // }
-
-  // function usaModal(){
-  //   flagArr.forEach(function(index){
-  //     flagImg.attr("src", flagArr[2][4].url);
-  //     radioBtnOneName.text(flagArr[2][0].answerOne);
-  //     radioBtnTwoName.text(flagArr[2][1].answerTwoCorrect);
-  //     radioBtnThreeName.text(flagArr[2][2].answerThree);
-  //     radioBtnFourName.text(flagArr[2][3].answerFour);
-  //   })
-  // }
-
-//FLAG MODALS END HERE
-
-// //when start button is clicked, modal is triggered
-//   playButton.on("click", function (event) {
-//     myModal.modal('show');
-//     //loop through flagArr and change attributes of myModal
-//     japanModal();
-//   })
-
- // let action = 1;
- //
- //  nextBtn.on("click", function (event) {
- //    if(action === 1) {
- //    myModal.modal('show');
- //    canadaModal();
- //    action = 2;
- //    // nextBtn.removeClass("next").addClass("nextOne");
- //    } else {
- //      myModal.modal('show');
- //      usaModal();
- //      action = 3;
- //    }
- //
- //   })
-
-
-  // $(".nextOne").on("click", function (event) {
-  //   myModal.modal('show');
-  //   usaModal();
-
-    // $(".nextOne").removeClass("nextOne").addClass("nextTwo");
-    //loop through flagArr and change attributes of myModal
-    // flagArr.forEach(function(index){
-    //   flagImg.attr("src", flagArr[2][4].url);
-    //   radioButtonOne.text(flagArr[2][0].answerOne);
-    //   radioButtonTwo.text(flagArr[2][1].answerTwoCorrect);
-    //   radioButtonThree.text(flagArr[2][2].answerThree);
-    //   radioButtonFour.text(flagArr[2][3].answerFour);
-    //   $(".nextOne").removeClass("nextOne").addClass("nextTwo");
-    // })
-
-  // })
-
-
-
-});
+});  //document ready function ends here

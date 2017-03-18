@@ -42,3 +42,14 @@
   height: 143px;
   width: 243px;
 }
+#skyscannerLogo {
+  height: 40px;
+  width: 206px;
+}
+.navbar-brand {
+  font-size: 40px;
+  /*text-shadow: rgba(112, 112, 112, 0.2) 0 -2px;*/
+}
+.navbar-nav>li>a {
+  font-size: 20px;
+}
