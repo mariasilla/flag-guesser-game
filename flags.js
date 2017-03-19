@@ -124,23 +124,18 @@ $("document").ready(function() {
           radioBtnFourName.text(flagsArr[0].Results.US.Name);
 
           answerButtonOne.click(function(){
-            //  answerButtonOne.addClass("correct");
-            //  popover.attr("data-content", "Correct!:) Click next!");
              winner+=1;
              showRadioBtnOne();
             })
             answerButtonTwo.click(function(){
-              // answerButtonTwo.addClass("wrong");
               looser+=1;
               showRadioBtnTwo();
             })
             answerButtonThree.click(function(){
-              // answerButtonThree.addClass("wrong");
                 looser+=1;
                 showRadioBtnThree();
           })
           answerButtonFour.click(function(){
-              // answerButtonFour.addClass("wrong");
               looser+=1;
               showRadioBtnFour();
          })
@@ -155,23 +150,19 @@ $("document").ready(function() {
           radioBtnFourName.text(flagsArr[0].Results.US.Name);
 
           answerButtonOne.click(function(){
-             answerButtonOne.addClass("wrong");
              looser+=1;
              showRadioBtnOne();
           })
         answerButtonTwo.click(function(){
-             answerButtonTwo.addClass("wrong");
                looser+=1;
                showRadioBtnTwo();
          })
          answerButtonThree.click(function(){
-              answerButtonThree.addClass("correct");
               winner+=1;
               showRadioBtnThree();
               // popover.attr("data-content", "Correct!:) Click next!");
          })
          answerButtonFour.click(function(){
-              answerButtonFour.addClass("wrong");
                 looser+=1;
                 showRadioBtnFour();
          })
@@ -187,27 +178,19 @@ $("document").ready(function() {
           radioBtnFourName.text(flagsArr[0].Results.JP.Name);
 
         answerButtonOne.click(function(){
-           answerButtonOne.addClass("wrong");
-          //  alert("Wrong! Click next!");
             looser+=1;
             showRadioBtnOne();
         })
        answerButtonTwo.click(function(){
-           answerButtonTwo.addClass("correct");
              // popover.attr("data-content", "Correct!:) Click next!");
-            //  alert("That's correct! Click Next!")
              winner+=1;
              showRadioBtnTwo();
        })
        answerButtonThree.click(function(){
-            answerButtonThree.addClass("wrong");
-            // alert("Wrong! Click next!");
             looser+=1;
             showRadioBtnThree();
        })
        answerButtonFour.click(function(){
-            answerButtonFour.addClass("wrong");
-            // alert("Wrong! Click next!");
             looser+=1;
             showRadioBtnFour();
        })
@@ -223,27 +206,19 @@ $("document").ready(function() {
           radioBtnFourName.text(flagsArr[0].Results.CL.Name);
 
         answerButtonOne.click(function(){
-           answerButtonOne.addClass("wrong");
-          //  alert("Wrong! Click next!");
            looser+=1;
            showRadioBtnOne();
         })
        answerButtonTwo.click(function(){
-           answerButtonTwo.addClass("wrong");
              // popover.attr("data-content", "Correct!:) Click next!");
-            //  alert("That's correct! Click Next!")
              looser+=1;
              showRadioBtnTwo();
        })
        answerButtonThree.click(function(){
-            answerButtonThree.addClass("correct");
-            // alert("Wrong! Click next!");
             winner+=1;
             showRadioBtnThree();
        })
        answerButtonFour.click(function(){
-            answerButtonFour.addClass("wrong");
-            // alert("Wrong! Click next!");
             looser+=1;
             showRadioBtnFour();
        })
@@ -284,7 +259,7 @@ $("document").ready(function() {
              counter = 4;
            } else {
                gameResult();
-               console.log(counter);
+              //  console.log(counter);
            }
          });
 
@@ -320,6 +295,7 @@ $("document").ready(function() {
          }
 
          //15 seconds timer
+         //followed this tutorial http://www.smarttutorials.net/javascript-countdown-timer/
              let timer = $("#timer");
              let countDownTime = 16;
              let timeout;
