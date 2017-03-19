@@ -141,6 +141,7 @@ $("document").ready(function() {
          })
 
       }; // japanModal() ends here
+
       function canadaModal() {
           showAllBtns();
           flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/CA.png");
@@ -225,6 +226,174 @@ $("document").ready(function() {
 
      }; //ChinaModal() ends here
 
+     function italyModal(){
+         showAllBtns();
+         flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/IT.png");
+         radioBtnOneName.text(flagsArr[0].Results.GR.Name);
+         radioBtnTwoName.text(flagsArr[0].Results.US.Name);
+         radioBtnThreeName.text(flagsArr[0].Results.CA.Name);
+         radioBtnFourName.text(flagsArr[0].Results.IT.Name);
+
+       answerButtonOne.click(function(){
+          looser+=1;
+          showRadioBtnOne();
+       })
+      answerButtonTwo.click(function(){
+            // popover.attr("data-content", "Correct!:) Click next!");
+           looser+=1;
+           showRadioBtnTwo();
+      })
+      answerButtonThree.click(function(){
+           looser+=1;
+           showRadioBtnThree();
+      })
+      answerButtonFour.click(function(){
+           winner+=1;
+           showRadioBtnFour();
+      })
+
+    }; //italyModal() ends here
+
+    function russiaModal(){
+        showAllBtns();
+        flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/RU.png");
+        radioBtnOneName.text(flagsArr[0].Results.JP.Name);
+        radioBtnTwoName.text(flagsArr[0].Results.RU.Name);
+        radioBtnThreeName.text(flagsArr[0].Results.CA.Name);
+        radioBtnFourName.text(flagsArr[0].Results.IT.Name);
+
+      answerButtonOne.click(function(){
+         looser+=1;
+         showRadioBtnOne();
+      })
+      answerButtonTwo.click(function(){
+           // popover.attr("data-content", "Correct!:) Click next!");
+          winner+=1;
+          showRadioBtnTwo();
+      })
+      answerButtonThree.click(function(){
+          looser+=1;
+          showRadioBtnThree();
+      })
+      answerButtonFour.click(function(){
+          looser+=1;
+          showRadioBtnFour();
+      })
+
+    }; //russiaModal() ends here
+
+    function  chileModal(){
+        showAllBtns();
+        flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/CL.png");
+        radioBtnOneName.text(flagsArr[0].Results.CA.Name);
+        radioBtnTwoName.text(flagsArr[0].Results.US.Name);
+        radioBtnThreeName.text(flagsArr[0].Results.CL.Name);
+        radioBtnFourName.text(flagsArr[0].Results.JM.Name);
+
+      answerButtonOne.click(function(){
+         looser+=1;
+         showRadioBtnOne();
+      })
+      answerButtonTwo.click(function(){
+           // popover.attr("data-content", "Correct!:) Click next!");
+          looser+=1;
+          showRadioBtnTwo();
+      })
+      answerButtonThree.click(function(){
+          winner+=1;
+          showRadioBtnThree();
+      })
+      answerButtonFour.click(function(){
+          looser+=1;
+          showRadioBtnFour();
+      })
+
+    }; //chileModal() ends here
+
+
+    function jamaicaModal(){
+        showAllBtns();
+        flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/JM.png");
+        radioBtnOneName.text(flagsArr[0].Results.JM.Name);
+        radioBtnTwoName.text(flagsArr[0].Results.CA.Name);
+        radioBtnThreeName.text(flagsArr[0].Results.RU.Name);
+        radioBtnFourName.text(flagsArr[0].Results.JP.Name);
+
+      answerButtonOne.click(function(){
+         winner+=1;
+         showRadioBtnOne();
+      })
+      answerButtonTwo.click(function(){
+           // popover.attr("data-content", "Correct!:) Click next!");
+          looser+=1;
+          showRadioBtnTwo();
+      })
+      answerButtonThree.click(function(){
+          looser+=1;
+          showRadioBtnThree();
+      })
+      answerButtonFour.click(function(){
+          looser+=1;
+          showRadioBtnFour();
+      })
+    }; //jamaicaModal() ends here
+
+
+    function ukraineModal(){
+        showAllBtns();
+        flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/UA.png");
+        radioBtnOneName.text(flagsArr[0].Results.JM.Name);
+        radioBtnTwoName.text(flagsArr[0].Results.JP.Name);
+        radioBtnThreeName.text(flagsArr[0].Results.UA.Name);
+        radioBtnFourName.text(flagsArr[0].Results.CA.Name);
+
+      answerButtonOne.click(function(){
+         looser+=1;
+         showRadioBtnOne();
+      })
+      answerButtonTwo.click(function(){
+           // popover.attr("data-content", "Correct!:) Click next!");
+          looser+=1;
+          showRadioBtnTwo();
+      })
+      answerButtonThree.click(function(){
+          winner+=1;
+          showRadioBtnThree();
+      })
+      answerButtonFour.click(function(){
+          looser+=1;
+          showRadioBtnFour();
+      })
+    }; //ukraineModal() ends here
+
+    function ethiopiaModal(){
+        showAllBtns();
+        flagImg.attr("src", "http://www.geognos.com/api/en/countries/flag/ET.png");
+        radioBtnOneName.text(flagsArr[0].Results.UA.Name);
+        radioBtnTwoName.text(flagsArr[0].Results.IT.Name);
+        radioBtnThreeName.text(flagsArr[0].Results.JM.Name);
+        radioBtnFourName.text(flagsArr[0].Results.ET.Name);
+
+      answerButtonOne.click(function(){
+         looser+=1;
+         showRadioBtnOne();
+      })
+      answerButtonTwo.click(function(){
+           // popover.attr("data-content", "Correct!:) Click next!");
+          looser+=1;
+          showRadioBtnTwo();
+      })
+      answerButtonThree.click(function(){
+          looser+=1;
+          showRadioBtnThree();
+      })
+      answerButtonFour.click(function(){
+          winner+=1;
+          showRadioBtnFour();
+      })
+    }; //ethiopiaModal() ends here
+
+
 
       //when start button is clicked, modal is triggered
         playButton.on("click", function (event) {
@@ -257,6 +426,24 @@ $("document").ready(function() {
              flagModal.modal('show');
              chinaModal();
              counter = 4;
+           } else if (counter === 4) {
+             italyModal();
+             counter = 5;
+           } else if (counter === 5) {
+             russiaModal();
+             counter = 6;
+           } else if (counter === 6) {
+             chileModal();
+             counter = 7;
+           } else if (counter === 7) {
+             jamaicaModal();
+             counter = 8;
+           } else if (counter === 8) {
+             ukraineModal();
+             counter = 9;
+           } else if (counter === 9) {
+             ethiopiaModal();
+             counter = 10;
            } else {
                gameResult();
               //  console.log(counter);
@@ -285,19 +472,19 @@ $("document").ready(function() {
 
          //function check if winner or looser
          function gameResult() {
-           if(winner > 2) {
+           if(winner > 5) {
            showWinnerModal();
-           console.log(winner);
-         } else if (looser > 2){
+           console.log("winner score is " + winner);
+         } else if (looser > 5){
            showLooserModal();
-           console.log(looser);
+           console.log("looser score is " + looser);
            }
          }
 
          //15 seconds timer
          //followed this tutorial http://www.smarttutorials.net/javascript-countdown-timer/
              let timer = $("#timer");
-             let countDownTime = 16;
+             let countDownTime = 15;
              let timeout;
              let x;
              function countDownTimer() {
@@ -305,8 +492,9 @@ $("document").ready(function() {
              timer.text(countDownTime);
              x = setTimeout(function(){ countDownTimer() }, 1000);
                if (countDownTime < 0) {
-                 timer.text("time out");
+                 timer.text("Time out");
                  stopIntervalFunc();
+                //  gameResult()
                }
              }
 
