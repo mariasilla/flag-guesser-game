@@ -37,20 +37,20 @@ $("document").ready(function() {
   let countriesNames = [];
   function flagsGame() {
 
-     //Loop through json object and get countries names
-           flagsArr.forEach(function(i){
-                  //  console.log(flagsArr[0].Results);
-
-                 for (let key in flagsArr[0].Results) {
-                    //  console.log(flagsArr[0].Results[key].Name);
-                     countriesNames.push(flagsArr[0].Results[key].Name);
-                    }
-                 })
-                // console.log(flagsArr[0].Results);
-       // Ordered Array of all the countries in alphabetical order
-      let countriesNamesOrdered = countriesNames.sort();
-         console.log(countriesNamesOrdered);
-      var randomCountry = countriesNamesOrdered[Math.floor(Math.random() * countriesNamesOrdered.length)];
+    //  //Loop through json object and get countries names
+    //        flagsArr.forEach(function(i){
+    //               //  console.log(flagsArr[0].Results);
+     //
+    //              for (let key in flagsArr[0].Results) {
+    //                 //  console.log(flagsArr[0].Results[key].Name);
+    //                  countriesNames.push(flagsArr[0].Results[key].Name);
+    //                 }
+    //              })
+    //             // console.log(flagsArr[0].Results);
+    //    // Ordered Array of all the countries in alphabetical order
+    //   let countriesNamesOrdered = countriesNames.sort();
+    //      console.log(countriesNamesOrdered);
+    //   var randomCountry = countriesNamesOrdered[Math.floor(Math.random() * countriesNamesOrdered.length)];
 
 
       //  //MODAL
@@ -104,6 +104,13 @@ $("document").ready(function() {
         $(".two").show();
         $(".three").show();
         $(".four").show();
+      }
+
+      function hideAllBtns() {
+        $(".one").hide();
+        $(".two").hide();
+        $(".three").hide();
+        $(".four").hide();
       }
 
       //FLAG MODALS START HERE
@@ -246,6 +253,8 @@ $("document").ready(function() {
 
       //when start button is clicked, modal is triggered
         playButton.on("click", function (event) {
+          event.preventDefault();
+          countDownTimer();
           flagModal.modal('show');
           //loop through flagArr and change attributes of flagModal
           japanModal();
@@ -255,15 +264,21 @@ $("document").ready(function() {
          let counter = 1;
          nextBtn.on("click", function (event) {
            if(counter === 1) {
+           event.preventDefault();
+           countDownTimer();
            flagModal.modal('show');
            canadaModal();
            counter = 2;
            // nextBtn.removeClass("next").addClass("nextOne");
            } else if (counter === 2){
+             event.preventDefault();
+             countDownTimer();
              flagModal.modal('show');
              usaModal();
              counter = 3;
            } else if (counter === 3) {
+             event.preventDefault();
+             countDownTimer();
              flagModal.modal('show');
              chinaModal();
              counter = 4;
@@ -287,12 +302,10 @@ $("document").ready(function() {
          }; //showWinner() ends here
 
          function showLooserModal() {
-          //  if(looser === 2) {
              $("#winnerOrLooserModal").modal("show");
              $(".looser").text("Sorry! Try again!!!");
              $(".looserGif").attr("src", "https://media.giphy.com/media/auxWjSpDJ8544/giphy.gif");
              flagModal.modal('hide');
-          //  }
          }; //showLooser() ends here
 
          //function check if winner or looser
@@ -306,6 +319,27 @@ $("document").ready(function() {
            }
          }
 
+         //15 seconds timer
+             let timer = $("#timer");
+             let countDownTime = 16;
+             let timeout;
+             let x;
+             function countDownTimer() {
+             countDownTime-=1;
+             timer.text(countDownTime);
+             x = setTimeout(function(){ countDownTimer() }, 1000);
+               if (countDownTime < 0) {
+                 timer.text("time out");
+                 stopIntervalFunc();
+               }
+             }
+
+             function stopIntervalFunc() {
+               clearInterval(x);
+               hideAllBtns();
+             }
+
+
   }; // flagsGame() ends here
 
 //Activate Bootstrap popover on click
@@ -314,6 +348,14 @@ $("document").ready(function() {
     $(this).popover('toggle')
   })
 // })
+
+
+
+
+
+
+
+
 
 
 });  //document ready function ends here
