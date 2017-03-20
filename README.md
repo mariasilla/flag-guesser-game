@@ -3,4 +3,4 @@ Guess-a-flag game built as Project 1 for General Assembly's web immersive progra
 User needs to guess which country corresponds to each flag.
 
 Project is deployed here: http://guess-a-flag.surge.sh/
-Cross origin resource sharing needs to be enabled.
+
