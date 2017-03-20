@@ -26,14 +26,8 @@ $("document").ready(function() {
   let answerButtonThree = $(".three");
   let answerButtonFour = $(".four");
   let popover = $('[data-toggle="popover"]');
-  // let winner = 0;
-  // let looser = 0;
   let score = 0;
 
-  // flagsArr.forEach(function(index){
-      // console.log(flagsArr[0].Results.i.Name);
-  //
-  // })
   let countriesNames = [];
   function flagsGame() {
 
@@ -124,7 +118,6 @@ $("document").ready(function() {
           $(".closeBtn").hide();
           answerButtonOne.click(function(){
              score+=1;
-            //  console.log("japan winner score is " + score);
              showRadioBtnOne();
             })
 
@@ -192,7 +185,6 @@ $("document").ready(function() {
 
         })
        answerButtonTwo.click(function(){
-             // popover.attr("data-content", "Correct!:) Click next!");
              score+=1;
              showRadioBtnTwo();
 
@@ -295,8 +287,6 @@ $("document").ready(function() {
       })
       answerButtonThree.click(function(){
          score-=1;
-          // looser+=1;
-          // console.log("loose score is " + looser);
           showRadioBtnThree();
       })
       answerButtonFour.click(function(){
@@ -426,7 +416,6 @@ $("document").ready(function() {
     }; //ethiopiaModal() ends here
 
 
-
       //when start button is clicked, modal is triggered
         playButton.on("click", function (event) {
           event.preventDefault();
@@ -443,7 +432,6 @@ $("document").ready(function() {
            flagModal.modal('show');
            canadaModal();
            counter = 2;
-           // nextBtn.removeClass("next").addClass("nextOne");
            } else if (counter === 2){
              flagModal.modal('show');
              usaModal();
@@ -538,19 +526,8 @@ $("document").ready(function() {
 
   }; // flagsGame() ends here
 
-//Activate Bootstrap popover on click
-// $(function () {
-  popover.popover().click(function(){
-    $(this).popover('toggle')
-  })
-// })
-
-
-
-
-
-
-
+//Activate Bootstrap tooltip
+$('.rules').tooltip("hover focus");
 
 
 

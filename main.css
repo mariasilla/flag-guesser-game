@@ -56,5 +56,22 @@
 #timer {
   display: inline;
   margin: 40px 100px;
-  font-size: 52px;
+  font-size: 30px;
+}
+.reloadBtn {
+  font-size: 25px;
+}
+.navbar-default .navbar-brand {
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+  color: #26d3bd;
+}
+.navbar-default .navbar-nav>li>a {
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+.next {
+  background-color: #26d3bd;
+}
+.footer p {
+  text-align: center;
+  color:  #26d3bd;
 }
